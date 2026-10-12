@@ -1,3 +1,6 @@
+
+
+Index · HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +13,7 @@
 <meta property="og:description" content="Join the waitlist and lock in 20% off at launch. No promo codes, no accounts needed.">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23000'/%3E%3Ctext x='32' y='45' font-size='40' font-weight='800' text-anchor='middle' fill='%23FFC107' font-family='sans-serif'%3EC%3C/text%3E%3C/svg%3E">
-
+ 
 <style>
   :root {
     --bg: #000000;
@@ -32,7 +35,7 @@
   }
   a { color: inherit; }
   .wrap { width: min(1120px, 100% - 2rem); margin-inline: auto; }
-
+ 
   /* ---------- Header ---------- */
   header { border-bottom: 1px solid var(--line); }
   .bar { display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; gap: 1rem; }
@@ -41,7 +44,7 @@
     font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
     color: var(--gold); border: 1px solid rgba(255,193,7,.45); border-radius: 999px; padding: .4rem .8rem; white-space: nowrap;
   }
-
+ 
   /* ---------- Hero ---------- */
   .hero {
     display: grid; gap: 2rem; padding: 2.5rem 0 3rem; align-items: center;
@@ -52,7 +55,7 @@
   h1 span { color: var(--gold); }
   .lead { margin: 1.1rem 0 0; font-size: clamp(1rem, 3.6vw, 1.2rem); color: #d4d4d4; max-width: 34rem; }
   .lead strong { color: #fff; }
-
+ 
   .signup { margin-top: 1.6rem; max-width: 34rem; }
   .field {
     display: flex; flex-direction: column; gap: .6rem;
@@ -77,12 +80,12 @@
   .btn.busy .spinner { display: inline-block; }
   @keyframes spin { to { transform: rotate(360deg); } }
   .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; } /* spam trap */
-
+ 
   .note { margin: .9rem 0 0; font-size: .85rem; color: var(--muted); }
   .note strong { color: #fff; font-weight: 600; }
   #msg { min-height: 1.4rem; margin: .6rem 0 0; font-size: .9rem; }
   #msg.error { color: var(--err); }
-
+ 
   .success {
     display: none; margin-top: 1.6rem; max-width: 34rem; padding: 1.3rem 1.4rem;
     background: var(--card); border: 1px solid rgba(76,175,80,.5); border-radius: 14px;
@@ -92,7 +95,7 @@
   .success p { margin: 0; color: #d4d4d4; font-size: .95rem; }
   .tick { display: inline-grid; place-items: center; width: 1.7rem; height: 1.7rem; border-radius: 50%; background: var(--ok); color: #000; flex: none; }
   @keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
-
+ 
   /* ---------- Hero art ---------- */
   .art {
     position: relative; aspect-ratio: 5 / 5.2; border-radius: 22px; overflow: hidden;
@@ -107,7 +110,7 @@
   }
   .tag b { display: block; font-size: 1.7rem; }
   .tag small { font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; }
-
+ 
   /* ---------- Sections ---------- */
   section.block { padding: 3rem 0; border-top: 1px solid var(--line); }
   h2.title { margin: 0 0 .5rem; font-size: clamp(1.5rem, 5vw, 2.1rem); letter-spacing: -.01em; }
@@ -119,11 +122,11 @@
   .card h3 { margin: .5rem 0 .4rem; font-size: 1.15rem; }
   .card p { margin: 0; color: var(--muted); font-size: .95rem; }
   .num { font-size: 2rem; font-weight: 800; color: var(--gold); line-height: 1; }
-
+ 
   .cta { text-align: center; padding: 3.5rem 0 4rem; border-top: 1px solid var(--line); }
   .cta .btn { display: inline-flex; text-decoration: none; padding: 0 2rem; }
   footer { border-top: 1px solid var(--line); padding: 1.6rem 0 2rem; text-align: center; font-size: .8rem; color: #737373; }
-
+ 
   /* ---------- Bigger screens ---------- */
   @media (min-width: 560px) {
     .field { flex-direction: row; }
@@ -138,7 +141,7 @@
   @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } html { scroll-behavior: auto; } }
 </style>
 </head>
-
+ 
 <body>
 <header>
   <div class="wrap bar">
@@ -146,7 +149,7 @@
     <span class="pill">Early access</span>
   </div>
 </header>
-
+ 
 <main id="top">
   <!-- ================= HERO ================= -->
   <div class="wrap hero">
@@ -154,7 +157,7 @@
       <p class="eyebrow">Launching soon in Kampala</p>
       <h1>Premium thrift. <span>First-class</span> second-hand collections.</h1>
       <p class="lead">Hand-picked, quality-checked pieces delivered across Kampala &amp; Entebbe. <strong>Join the waitlist and lock in an automatic 20% discount at launch.</strong></p>
-
+ 
       <!-- Waitlist form -->
       <form id="waitlist" class="signup" novalidate>
         <div class="field">
@@ -167,13 +170,13 @@
         <p id="msg" role="status" aria-live="polite"></p>
         <p class="note"><strong>No promo codes, no accounts needed. Just enter your email, and your discount will be applied automatically at checkout on launch day!</strong></p>
       </form>
-
+ 
       <div id="success" class="success" role="status" aria-live="polite" tabindex="-1">
         <h2><span class="tick" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></span><span id="successTitle">You're on the list!</span></h2>
         <p>Your spot is saved and your 20% launch discount is locked in. We'll email you the moment CLOSET opens. Thank you for believing in us!</p>
       </div>
     </div>
-
+ 
     <!-- Hero image: illustrated placeholder. Add your own photo as images/hero.jpg and it replaces the drawing automatically. -->
     <div class="art" aria-label="A rail of premium second-hand clothes">
       <svg viewBox="0 0 500 520" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
@@ -199,7 +202,7 @@
       <div class="tag"><span><b>20%</b><small>off at launch</small></span></div>
     </div>
   </div>
-
+ 
   <!-- ================= WHY CLOSET ================= -->
   <section class="block">
     <div class="wrap">
@@ -212,7 +215,7 @@
       </div>
     </div>
   </section>
-
+ 
   <!-- ================= HOW IT WORKS ================= -->
   <section class="block">
     <div class="wrap">
@@ -225,7 +228,7 @@
       </div>
     </div>
   </section>
-
+ 
   <section class="cta">
     <div class="wrap">
       <h2 class="title">Be first in the closet.</h2>
@@ -234,35 +237,35 @@
     </div>
   </section>
 </main>
-
+ 
 <footer><div class="wrap">© CLOSET. Kampala, Uganda.</div></footer>
-
+ 
 <script>
 /* ============================================================================
    1) PASTE YOUR DEPLOYED GOOGLE CLOUD FUNCTION URL BETWEEN THE QUOTES BELOW.
    ============================================================================ */
 const GOOGLE_CLOUD_FUNCTION_URL = "PASTE_YOUR_GOOGLE_CLOUD_FUNCTION_URL_HERE";
-
+ 
 /* ----------------------------------------------------------------------------
    2) YOUR CLOUD FUNCTION MUST ANSWER CORS, OR THE BROWSER WILL BLOCK THE REQUEST.
       Sending JSON triggers a "preflight" OPTIONS request, so the function needs
       to reply to it. Example (Node.js, HTTP function):
-
+ 
       exports.joinWaitlist = async (req, res) => {
         res.set("Access-Control-Allow-Origin", "https://YOUR-USERNAME.github.io"); // your site's origin, no path
         res.set("Access-Control-Allow-Methods", "POST, OPTIONS");
         res.set("Access-Control-Allow-Headers", "Content-Type");
         if (req.method === "OPTIONS") return res.status(204).send("");
         if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed" });
-
+ 
         const email = String((req.body && req.body.email) || "").trim().toLowerCase();
         if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return res.status(400).json({ error: "Invalid email" });
-
+ 
         // TODO: save the email (for example in Firestore) and de-duplicate it
         return res.status(200).json({ ok: true });
       };
    ---------------------------------------------------------------------------- */
-
+ 
 (() => {
   const form = document.getElementById("waitlist");
   const input = document.getElementById("email");
@@ -273,7 +276,7 @@ const GOOGLE_CLOUD_FUNCTION_URL = "PASTE_YOUR_GOOGLE_CLOUD_FUNCTION_URL_HERE";
   const STORE_KEY = "closet_waitlist_joined";
   const TIMEOUT_MS = 15000;
   const emailOk = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
-
+ 
   function setMsg(text, isError) { msg.textContent = text || ""; msg.className = isError ? "error" : ""; }
   function setBusy(busy) {
     btn.disabled = busy; btn.classList.toggle("busy", busy);
@@ -285,29 +288,29 @@ const GOOGLE_CLOUD_FUNCTION_URL = "PASTE_YOUR_GOOGLE_CLOUD_FUNCTION_URL_HERE";
     document.getElementById("successTitle").textContent = already ? "You're already on the list!" : "You're on the list!";
     success.classList.add("show"); success.focus({ preventScroll: true });
   }
-
+ 
   // Remember (in this browser only) that the visitor has already joined
   try { if (localStorage.getItem(STORE_KEY)) showSuccess(true); } catch (_) {}
-
+ 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();                                   // stop the normal page-reloading submit
     if (btn.disabled) return;                                 // ignore double taps
-
+ 
     if (form.elements["website"].value) { showSuccess(false); return; }   // spam bot filled the hidden field: pretend success
-
+ 
     const email = input.value.trim().toLowerCase();
     if (!emailOk(email)) { setMsg("Please enter a valid email address.", true); input.focus(); return; }
-
+ 
     if (GOOGLE_CLOUD_FUNCTION_URL.startsWith("PASTE_")) {
       console.warn("Set GOOGLE_CLOUD_FUNCTION_URL in index.html to your deployed function's URL.");
       setMsg("The waitlist isn't connected yet. Please check back soon.", true);
       return;
     }
-
+ 
     setMsg(""); setBusy(true);
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);   // give up after 15 seconds
-
+ 
     try {
       const res = await fetch(GOOGLE_CLOUD_FUNCTION_URL, {
         method: "POST",
@@ -317,12 +320,12 @@ const GOOGLE_CLOUD_FUNCTION_URL = "PASTE_YOUR_GOOGLE_CLOUD_FUNCTION_URL_HERE";
         body: JSON.stringify({ email, source: "closet-waitlist-landing", submittedAt: new Date().toISOString() }),
         signal: controller.signal,
       });
-
+ 
       if (!res.ok) {
         let detail = ""; try { detail = (await res.json()).error || ""; } catch (_) {}
         throw new Error(detail || `Request failed (${res.status})`);
       }
-
+ 
       try { localStorage.setItem(STORE_KEY, "1"); } catch (_) {}
       showSuccess(false);                                      // polite success message
     } catch (err) {
@@ -335,9 +338,14 @@ const GOOGLE_CLOUD_FUNCTION_URL = "PASTE_YOUR_GOOGLE_CLOUD_FUNCTION_URL_HERE";
       clearTimeout(timer);
     }
   });
-
+ 
   document.getElementById("ctaBtn").addEventListener("click", () => setTimeout(() => input.focus({ preventScroll: true }), 400));
 })();
 </script>
 </body>
 </html>
+ 
+
+
+
+
