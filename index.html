@@ -233,7 +233,7 @@ const GOOGLE_CLOUD_FUNCTION_URL = "PASTE_YOUR_GOOGLE_CLOUD_FUNCTION_URL_HERE";
 
 const BRAND_NAME = "CLOSET";   // change the brand name here in one place
 const HERO_IMAGE_POSITION = "center";       // which part of the photo stays visible when it is cropped: "center", "top", "center 30%", ...
-const HERO_IMAGE_URL = "images/hero.jpg";   // your premium-clothes photo (a file in the "images" folder, or any image link)
+const HERO_IMAGE_URL = "hero.jpg";          // your photo: the file sitting next to index.html (or put it in an "images" folder and write "images/hero.jpg")
 
 (() => {
   const $ = (id) => document.getElementById(id);
@@ -247,7 +247,7 @@ const HERO_IMAGE_URL = "images/hero.jpg";   // your premium-clothes photo (a fil
 
   // Hero image slot: the photo fills the whole card once it loads (tries a few common file names)
   const heroImg = $("heroImg");
-  const candidates = [HERO_IMAGE_URL, "images/hero.jpg", "images/hero.jpeg", "images/hero.png", "images/hero.webp"].filter((u, i, a) => u && a.indexOf(u) === i);
+  const candidates = [HERO_IMAGE_URL, "hero.jpg", "hero.jpeg", "hero.png", "hero.webp", "images/hero.jpg", "images/hero.jpeg", "images/hero.png", "images/hero.webp"].filter((u, i, a) => u && a.indexOf(u) === i);
   let tryIndex = 0;
   heroImg.style.objectPosition = HERO_IMAGE_POSITION;
   heroImg.onload = () => { heroImg.hidden = false; $("art").classList.add("has-photo"); };
