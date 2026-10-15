@@ -25,13 +25,11 @@
   a { color: inherit; }
   .wrap { width: min(1120px, 100% - 2rem); margin-inline: auto; }
 
-  /* ---------- Header ---------- */
   header { border-bottom: 1px solid var(--line); padding-top: env(safe-area-inset-top); }
   .bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem 0; }
   .logo { font-size: 1.4rem; font-weight: 800; letter-spacing: .3em; text-decoration: none; }
   .pill { font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(255,193,7,.45); border-radius: 999px; padding: .4rem .8rem; white-space: nowrap; }
 
-  /* ---------- Marquee banner (thin, between the logo and the headline) ---------- */
   .marquee { border-bottom: 1px solid var(--line); background: linear-gradient(90deg, #000, #0d0a03 50%, #000); }
   .mask { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
   .track { display: flex; width: max-content; animation: marquee 42s linear infinite; }
@@ -41,7 +39,6 @@
   .group li::after { content: "\2726"; margin: 0 1.7rem; color: var(--gold); font-size: .58rem; letter-spacing: 0; }
   @keyframes marquee { to { transform: translateX(-50%); } }
 
-  /* ---------- Hero ---------- */
   main { flex: 1; }
   .hero {
     display: grid; gap: 2rem; align-items: center; padding: 2rem 0 3rem;
@@ -53,7 +50,6 @@
   h1 span { color: var(--gold); }
   .lead { margin: 1.1rem 0 0; font-size: clamp(1rem, 3.6vw, 1.2rem); color: #d4d4d4; max-width: 34rem; }
 
-  /* ---------- State 1: form ---------- */
   .form { margin-top: 1.6rem; }
   .field { display: flex; flex-direction: column; gap: .6rem; }
   .field input[type="email"] {
@@ -78,7 +74,6 @@
   .perk { margin: .5rem 0 0; font-size: .85rem; color: var(--muted); }
   .perk strong { color: #fff; font-weight: 700; }
 
-  /* ---------- State 2: digital ticket ---------- */
   .ticket-wrap { margin-top: 0; }
   .ticket-wrap.show { animation: rise .6s cubic-bezier(.2,.8,.2,1) both; }
   @keyframes rise { from { opacity: 0; transform: translateY(12px) scale(.98); } to { opacity: 1; transform: none; } }
@@ -101,10 +96,9 @@
   .btn.ghost:hover:not(:disabled) { background: rgba(255,255,255,.06); }
   .link { background: none; border: 0; color: var(--muted); font: inherit; font-size: .82rem; text-decoration: underline; cursor: pointer; padding: .6rem; }
 
-  /* ---------- Hero image slot ---------- */
   .art { position: relative; aspect-ratio: 5 / 5.2; border-radius: 22px; overflow: hidden; border: 1px solid var(--line); background: var(--card); }
   .art svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-  .art img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: 1; display: block; } /* photo always fills the whole card */
+  .art img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: 1; display: block; }
   .art.has-photo::before { content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none; background: linear-gradient(to top, rgba(0,0,0,.4), transparent 38%); }
   .art:not(.has-photo)::after {
     content: "Your photo goes here: images/hero.jpg"; position: absolute; left: .9rem; bottom: .9rem; z-index: 2; max-width: calc(100% - 8.5rem); padding: .45rem .7rem;
@@ -142,7 +136,6 @@
   </div>
 </header>
 
-<!-- Slow-scrolling highlights (pauses on hover). The second list is a copy that makes the loop seamless. -->
 <div class="marquee" role="region" aria-label="Highlights">
   <div class="mask"><div class="track">
     <ul class="group"><li>Your new online clothing destination</li><li>High-quality apparel</li><li>20% off for early access</li><li>Your new online clothing destination</li><li>High-quality apparel</li><li>20% off for early access</li><li>Your new online clothing destination</li><li>High-quality apparel</li><li>20% off for early access</li></ul>
@@ -154,14 +147,12 @@
   <div class="wrap hero">
 
     <div class="copy">
-      <!-- Always the promise (hidden once the ticket appears) -->
       <div id="intro">
         <p class="eyebrow">The private launch list</p>
         <h1>Your new online clothing destination in Kampala, <span>arriving soon!</span></h1>
         <p class="lead">High-quality, brand-new pieces designed for your everyday style. Explore the upcoming collection, select your favorite fits, and place your order online for seamless delivery across Kampala &amp; Entebbe.</p>
       </div>
 
-      <!-- SCREEN STATE 1: before sign-up -->
       <form id="waitlist" class="form" novalidate>
         <div class="field">
           <label for="email" class="hp">Email address</label>
@@ -173,7 +164,6 @@
         <p class="perk"><strong>Joining locks in an automatic 20% discount at launch.</strong> No accounts, no codes. Just your email.</p>
       </form>
 
-      <!-- SCREEN STATE 2: after sign-up (digital ticket) -->
       <div id="ticketWrap" class="ticket-wrap" role="status" aria-live="polite" tabindex="-1" hidden>
         <article class="ticket" aria-label="Your place in line">
           <div class="t-top"><span data-brand>CLOSET</span><b>Admit one · Early access</b></div>
@@ -193,9 +183,6 @@
       </div>
     </div>
 
-    <!-- ===================== HERO IMAGE SLOT =====================
-         Save your photo as  images/hero.jpg  (or .png / .webp) next to this file, or set HERO_IMAGE_URL in the script.
-         You do NOT need to edit this HTML: the photo automatically fills the whole card. -->
     <div class="art" id="art">
       <svg viewBox="0 0 500 520" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
         <defs>
@@ -224,156 +211,145 @@
 
 <footer><div class="wrap">© <span data-brand>CLOSET</span> · Kampala, Uganda</div></footer>
 
-<script>
+<script type="module">
 /* ===========================================================================
-   PASTE YOUR GOOGLE CLOUD FUNCTION TRIGGER URL BETWEEN THE QUOTES BELOW
-   (the "https://...run.app" link that `gcloud functions deploy` prints).
+   Firebase setup — v9 modular SDK, loaded straight from the CDN.
+   Your config keys are already filled in below.
    =========================================================================== */
-const GOOGLE_CLOUD_FUNCTION_URL = "PASTE_YOUR_GOOGLE_CLOUD_FUNCTION_URL_HERE";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-const BRAND_NAME = "CLOSET";   // change the brand name here in one place
-const HERO_IMAGE_POSITION = "center";       // which part of the photo stays visible when it is cropped: "center", "top", "center 30%", ...
-const HERO_IMAGE_URL = "hero.jpg";          // your photo: the file sitting next to index.html (or put it in an "images" folder and write "images/hero.jpg")
-
-(() => {
-  const $ = (id) => document.getElementById(id);
-  const form = $("waitlist"), input = $("email"), btn = $("submitBtn"), btnText = $("btnText"), msg = $("msg");
-  const STORE_KEY = "waitlist_ticket_v1", TIMEOUT_MS = 15000;
-  const emailOk = (v) => /^[^\s@/]+@[^\s@/]+\.[^\s@/]+$/.test(v);
-  const fmt = new Intl.NumberFormat("en");
-
-  document.querySelectorAll("[data-brand]").forEach((el) => (el.textContent = BRAND_NAME));
-  document.title = `${BRAND_NAME} | The Private Launch List`;
-
-  // Hero image slot: the photo fills the whole card once it loads (tries a few common file names)
-  const heroImg = $("heroImg");
-  const candidates = [HERO_IMAGE_URL, "hero.jpg", "hero.jpeg", "hero.png", "hero.webp", "images/hero.jpg", "images/hero.jpeg", "images/hero.png", "images/hero.webp"].filter((u, i, a) => u && a.indexOf(u) === i);
-  let tryIndex = 0;
-  heroImg.style.objectPosition = HERO_IMAGE_POSITION;
-  heroImg.onload = () => { heroImg.hidden = false; $("art").classList.add("has-photo"); };
-  heroImg.onerror = () => { tryIndex += 1; if (tryIndex < candidates.length) heroImg.src = candidates[tryIndex]; else heroImg.remove(); };
-  heroImg.src = candidates[0];
-
-  const mask = (e) => { const [u, d] = e.split("@"); return `${u[0]}${"•".repeat(Math.max(2, Math.min(u.length - 1, 5)))}@${d}`; };
-  const setMsg = (t) => { msg.textContent = t || ""; };
-  function setBusy(b) { btn.disabled = b; btn.classList.toggle("busy", b); btnText.textContent = b ? "Saving your spot..." : "Join the Line"; input.readOnly = b; }
-
-  // Counts the big number up for a little drama (skipped for people who prefer less motion)
-  function countUp(el, to) {
-    const write = (n) => { el.firstChild.nodeValue = "#" + fmt.format(n); };
-    if (matchMedia("(prefers-reduced-motion: reduce)").matches || to < 2) return write(to);
-    const start = performance.now(), dur = 1100;
-    (function tick(now) { const p = Math.min(1, (now - start) / dur); write(Math.round(to * (1 - Math.pow(1 - p, 3)))); if (p < 1) requestAnimationFrame(tick); })(start);
-  }
-
-  // Swap the form for the ticket
-  function showTicket({ position, email, joinedAt, already }) {
-    $("waitlist").hidden = true; $("intro").hidden = true;
-    $("tLabel").textContent = already ? "Welcome back" : "Your place";
-    $("tTitle").textContent = already ? "You're already in line." : "Thank you.";
-    $("tText").textContent = already ? "Your spot is safe and your 20% is still locked in. We'll email you when the doors open."
-                                     : "You're in. We'll email you the moment the doors open.";
-    $("tEmail").textContent = mask(email);
-    $("tDate").textContent = new Date(joinedAt || Date.now()).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
-    $("tNum").firstChild.nodeValue = "#0";
-    countUp($("tNum"), position);
-    const text = `I'm #${fmt.format(position)} in line for ${BRAND_NAME}'s launch! Join the line and get 20% off: ${location.href.split("#")[0]}`;
-    $("shareBtn").href = "https://wa.me/?text=" + encodeURIComponent(text);
-    $("ticketWrap").hidden = false; $("ticketWrap").classList.add("show"); $("ticketWrap").focus({ preventScroll: true });
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }
-
-  // Returning visitor on the same phone: show their ticket straight away
-  try { const saved = JSON.parse(localStorage.getItem(STORE_KEY) || "null"); if (saved && saved.position) showTicket({ ...saved, already: true }); } catch (_) {}
-    form.addEventListener("submit", async (event) => {
-    event.preventDefault();
-    if (btn.disabled) return;
-
-    if (form.elements["website"].value) return; // spam bot check
-
-    const userEmail = input.value.trim().toLowerCase();
-    if (!emailOk(userEmail)) {
-      setMsg("Please enter a valid email address.");
-      input.focus();
-      return;
-    }
-
-    setMsg("");
-    setBusy(true);
-
-    try {
-      // Direct direct call using your script configuration at the bottom
-      const waitlistCollection = collection(db, "waitlist");
-      await addDoc(waitlistCollection, {
-        email: userEmail,
-        joinedAt: serverTimestamp()
-      });
-
-      // Instantly launch the success ticket animation template
-      showTicket({ email: userEmail, already: false });
-
-    } catch (err) {
-      console.error("Firestore database connection failed:", err);
-      setMsg("Connection failed. Please check your network.", "error");
-      setBusy(false);
-    }
-  });
-
-  $("resetBtn").addEventListener("click", () => {
-    try { localStorage.removeItem(STORE_KEY); } catch (_) {}
-    $("ticketWrap").classList.remove("show"); $("ticketWrap").hidden = true; $("waitlist").hidden = false; $("intro").hidden = false;
-    input.value = ""; setBusy(false); setMsg(""); input.focus();
-  });
-})();
-</script>
-      <!-- Your waitlist form inputs and HTML content up here -->
-    
-    <script type="module">
-     import { initializeApp } from "https://gstatic.com";
-import { getFirestore, collection, addDoc, serverTimestamp } from "https://gstatic.com";
-
-// Your actual Firebase settings keys from your Firebase Project Settings console
 const firebaseConfig = {
-  apiKey: "AIzaSyASLy2Unk2thctuu3oXpbtSr_4b7b58gYk", 
-  authDomain: "://firebaseapp.com",
+  apiKey: "AIzaSyASLy2Unk2thctuu3oXpbtSr_4b7b58gYk",
+  authDomain: "closet-dfc3e.firebaseapp.com",
   projectId: "closet-dfc3e",
   storageBucket: "closet-dfc3e.firebasestorage.app",
-  messagingSenderId:"923039061167",
+  messagingSenderId: "923039061167",
   appId: "1:923039061167:web:02783eefb61ea552fc705a"
 };
 
+/* Initialize Firebase once, at module load. */
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+const db  = getFirestore(app);
 
-// Connect to your submit button to capture the email input field
-document.querySelector("#waitlistForm")?.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  
-  const emailInput = document.querySelector("#email");
-  const userEmail = emailInput ? emailInput.value : "";
+/* ===========================================================================
+   Page logic
+   =========================================================================== */
+const BRAND_NAME = "CLOSET";
+const HERO_IMAGE_POSITION = "center";
+const HERO_IMAGE_URL = "hero.jpg";
 
-  if (!userEmail) return;
+const $ = (id) => document.getElementById(id);
+const form = $("waitlist"), input = $("email"), btn = $("submitBtn"), btnText = $("btnText"), msg = $("msg");
+const STORE_KEY = "waitlist_ticket_v1";
+const emailOk = (v) => /^[^\s@/]+@[^\s@/]+\.[^\s@/]+$/.test(v);
+const fmt = new Intl.NumberFormat("en");
+
+document.querySelectorAll("[data-brand]").forEach((el) => (el.textContent = BRAND_NAME));
+document.title = `${BRAND_NAME} | The Private Launch List`;
+
+/* Hero image slot */
+const heroImg = $("heroImg");
+const candidates = [HERO_IMAGE_URL, "hero.jpg", "hero.jpeg", "hero.png", "hero.webp", "images/hero.jpg", "images/hero.jpeg", "images/hero.png", "images/hero.webp"].filter((u, i, a) => u && a.indexOf(u) === i);
+let tryIndex = 0;
+heroImg.style.objectPosition = HERO_IMAGE_POSITION;
+heroImg.onload = () => { heroImg.hidden = false; $("art").classList.add("has-photo"); };
+heroImg.onerror = () => { tryIndex += 1; if (tryIndex < candidates.length) heroImg.src = candidates[tryIndex]; else heroImg.remove(); };
+heroImg.src = candidates[0];
+
+const mask = (e) => { const [u, d] = e.split("@"); return `${u[0]}${"•".repeat(Math.max(2, Math.min(u.length - 1, 5)))}@${d}`; };
+const setMsg = (t) => { msg.textContent = t || ""; };
+function setBusy(b) {
+  btn.disabled = b;
+  btn.classList.toggle("busy", b);
+  btnText.textContent = b ? "Saving your spot..." : "Join the Line";
+  input.readOnly = b;
+}
+
+function countUp(el, to) {
+  const write = (n) => { el.firstChild.nodeValue = "#" + fmt.format(n); };
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches || to < 2) return write(to);
+  const start = performance.now(), dur = 1100;
+  (function tick(now) { const p = Math.min(1, (now - start) / dur); write(Math.round(to * (1 - Math.pow(1 - p, 3)))); if (p < 1) requestAnimationFrame(tick); })(start);
+}
+
+function showTicket({ position, email, joinedAt, already }) {
+  $("waitlist").hidden = true; $("intro").hidden = true;
+  $("tLabel").textContent = already ? "Welcome back" : "Your place";
+  $("tTitle").textContent = already ? "You're already in line." : "Thank you.";
+  $("tText").textContent = already ? "Your spot is safe and your 20% is still locked in. We'll email you when the doors open."
+                                   : "You're in. We'll email you the moment the doors open.";
+  $("tEmail").textContent = mask(email);
+  $("tDate").textContent = new Date(joinedAt || Date.now()).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+  $("tNum").firstChild.nodeValue = "#0";
+  if (typeof position === "number" && position > 0) countUp($("tNum"), position);
+  const text = `I'm #${fmt.format(position || 1)} in line for ${BRAND_NAME}'s launch! Join the line and get 20% off: ${location.href.split("#")[0]}`;
+  $("shareBtn").href = "https://wa.me/?text=" + encodeURIComponent(text);
+  $("ticketWrap").hidden = false; $("ticketWrap").classList.add("show"); $("ticketWrap").focus({ preventScroll: true });
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+/* Returning visitor on the same device: show their ticket straight away */
+try {
+  const saved = JSON.parse(localStorage.getItem(STORE_KEY) || "null");
+  if (saved && saved.position) showTicket({ ...saved, already: true });
+} catch (_) {}
+
+/* ---------------------------------------------------------------------------
+   THE CLEAN, SELF-CONTAINED SUBMIT HANDLER
+   --------------------------------------------------------------------------- */
+form.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  if (btn.disabled) return;
+
+  // Anti-spam honeypot
+  if (form.elements["website"] && form.elements["website"].value) return;
+
+  // Extract and validate the email
+  const userEmail = input.value.trim().toLowerCase();
+  if (!emailOk(userEmail)) {
+    setMsg("Please enter a valid email address.");
+    input.focus();
+    return;
+  }
+
+  setMsg("");
+  setBusy(true);
 
   try {
-    // Drops the email straight into your card-free 'waitlist' collection in Firestore
-    await addDoc(collection(db, "waitlist"), {
-      email: userEmail.trim().toLowerCase(),
+    // Save the document to the 'waitlist' collection in Firestore
+    const waitlistCollection = collection(db, "waitlist");
+    await addDoc(waitlistCollection, {
+      email: userEmail,
       joinedAt: serverTimestamp()
     });
 
-    // Triggers your ticket success animation (defined above on line 311)
-    if (typeof showTicket === "function") {
-      showTicket({ email: userEmail, already: false });
-    } else {
-      alert("You have joined the waitlist successfully!");
-    }
+    // Save ticket to localStorage so returning visitors skip the form
+    const ticket = { email: userEmail, position: 1, joinedAt: Date.now() };
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(ticket)); } catch (_) {}
+
+    setBusy(false);
+    showTicket({ email: userEmail, position: 1, already: false });
 
   } catch (err) {
-    console.error("Waitlist error:", err);
-    alert("Sorry, we couldn't save your email right now. Please try again.");
+    console.error("Firestore database connection failed:", err);
+    setMsg("Connection failed. Please check your network and try again.");
+    setBusy(false);
   }
 });
 
-    </script>
+/* Reset button: clear the ticket, show the form again */
+$("resetBtn").addEventListener("click", () => {
+  try { localStorage.removeItem(STORE_KEY); } catch (_) {}
+  $("ticketWrap").classList.remove("show");
+  $("ticketWrap").hidden = true;
+  $("waitlist").hidden = false;
+  $("intro").hidden = false;
+  input.value = "";
+  setBusy(false);
+  setMsg("");
+  input.focus();
+});
+</script>
 </body>
 </html>
