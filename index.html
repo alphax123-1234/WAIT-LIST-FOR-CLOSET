@@ -325,5 +325,54 @@ const HERO_IMAGE_URL = "hero.jpg";          // your photo: the file sitting next
   });
 })();
 </script>
+      <!-- Your waitlist form inputs and HTML content up here -->
+    
+    <script type="module">
+     import { initializeApp } from "https://gstatic.com";
+import { getFirestore, collection, addDoc, serverTimestamp } from "https://gstatic.com";
+
+// Your actual Firebase settings keys from your Firebase Project Settings console
+const firebaseConfig = {
+  apiKey: "AIzaSyASLy2Unk2thctuu3oXpbtSr_4b7b58gYk", 
+  authDomain: "://firebaseapp.com",
+  projectId: "closet-dfc3e",
+  storageBucket: "closet-dfc3e.firebasestorage.app",
+  messagingSenderId:"923039061167",
+  appId: "1:923039061167:web:02783eefb61ea552fc705a"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// Connect to your submit button to capture the email input field
+document.querySelector("#waitlistForm")?.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  
+  const emailInput = document.querySelector("#email");
+  const userEmail = emailInput ? emailInput.value : "";
+
+  if (!userEmail) return;
+
+  try {
+    // Drops the email straight into your card-free 'waitlist' collection in Firestore
+    await addDoc(collection(db, "waitlist"), {
+      email: userEmail.trim().toLowerCase(),
+      joinedAt: serverTimestamp()
+    });
+
+    // Triggers your ticket success animation (defined above on line 311)
+    if (typeof showTicket === "function") {
+      showTicket({ email: userEmail, already: false });
+    } else {
+      alert("You have joined the waitlist successfully!");
+    }
+
+  } catch (err) {
+    console.error("Waitlist error:", err);
+    alert("Sorry, we couldn't save your email right now. Please try again.");
+  }
+});
+
+    </script>
 </body>
 </html>
