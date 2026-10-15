@@ -285,37 +285,38 @@ const HERO_IMAGE_URL = "hero.jpg";          // your photo: the file sitting next
 
   // Returning visitor on the same phone: show their ticket straight away
   try { const saved = JSON.parse(localStorage.getItem(STORE_KEY) || "null"); if (saved && saved.position) showTicket({ ...saved, already: true }); } catch (_) {}
-
-  form.addEventListener("submit", async (event) => {
+    form.addEventListener("submit", async (event) => {
     event.preventDefault();
     if (btn.disabled) return;
-    if (form.elements["website"].value) return;                      // spam bots fill the hidden field; ignore them
 
-    const email = input.value.trim().toLowerCase();
-    if (!emailOk(email)) { setMsg("Please enter a valid email address."); input.focus(); return; }
-    if (GOOGLE_CLOUD_FUNCTION_URL.startsWith("PASTE_")) { console.warn("Set GOOGLE_CLOUD_FUNCTION_URL in index.html."); setMsg("The line isn't open just yet. Please check back soon."); return; }
+    if (form.elements["website"].value) return; // spam bot check
 
-    setMsg(""); setBusy(true);
-    const ctl = new AbortController(), timer = setTimeout(() => ctl.abort(), TIMEOUT_MS);
+    const userEmail = input.value.trim().toLowerCase();
+    if (!emailOk(userEmail)) {
+      setMsg("Please enter a valid email address.");
+      input.focus();
+      return;
+    }
+
+    setMsg("");
+    setBusy(true);
+
     try {
-      const res = await fetch(GOOGLE_CLOUD_FUNCTION_URL, {
-        method: "POST", mode: "cors", credentials: "omit",
-        headers: { "Content-Type": "application/json", "Accept": "application/json" },
-        body: JSON.stringify({ email }), signal: ctl.signal,
+      // Direct direct call using your script configuration at the bottom
+      const waitlistCollection = collection(db, "waitlist");
+      await addDoc(waitlistCollection, {
+        email: userEmail,
+        joinedAt: serverTimestamp()
       });
-      let data = {}; try { data = await res.json(); } catch (_) {}
-      if (!res.ok || !data.ok || !Number.isInteger(data.queue_position)) throw new Error(data.error || `Request failed (${res.status})`);
 
-      const ticket = { position: data.queue_position, email, joinedAt: data.joined_at };
-      try { localStorage.setItem(STORE_KEY, JSON.stringify(ticket)); } catch (_) {}
-      showTicket({ ...ticket, already: data.already_joined });
+      // Instantly launch the success ticket animation template
+      showTicket({ email: userEmail, already: false });
+
     } catch (err) {
-      console.error("Waitlist error:", err);
-      setMsg(err.name === "AbortError" ? "That took too long. Please check your connection and try again."
-           : /valid email/i.test(err.message) ? err.message
-           : "Sorry, we couldn't save your spot just now. Please try again in a moment.");
+      console.error("Firestore database connection failed:", err);
+      setMsg("Connection failed. Please check your network.", "error");
       setBusy(false);
-    } finally { clearTimeout(timer); }
+    }
   });
 
   $("resetBtn").addEventListener("click", () => {
